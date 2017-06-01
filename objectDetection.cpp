@@ -23,11 +23,11 @@ int main( int argc, const char** argv )
 {
     CommandLineParser parser(argc, argv,
         "{help h||}"
-        "{face_cascade|../../data/haarcascades/haarcascade_frontalface_alt.xml|}"
-        "{eyes_cascade|../../data/haarcascades/haarcascade_eye_tree_eyeglasses.xml|}");
+        "{face_cascade|/usr/local/share/OpenCV/haarcascades/haarcascade_frontalface_alt.xml|}"
+        "{eyes_cascade|/usr/local/share/OpenCV/haarcascades/haarcascade_eye_tree_eyeglasses.xml|}");
 
-    cout << "\nThis program demonstrates using the cv::CascadeClassifier class
-            to detect objects (Face + eyes) in a video stream.\n"
+    cout << "\nThis program demonstrates using the cv::CascadeClassifier class"
+            "to detect objects (Face + eyes) in a video stream.\n"
             "You can use Haar or LBP features.\n\n";
     parser.printMessage();
 
