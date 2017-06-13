@@ -5,8 +5,11 @@ LFLAGS = -Wall $(STD) $(OPENCV)
 
 all: a.out
 
-a.out: objectDetection.cpp
-	$(CXX) objectDetection.cpp $(LFLAGS)
+teste: objectDetection.cpp
+	$(CXX) objectDetection.cpp $(LFLAGS) -o teste
+
+a.out: main.cpp
+	$(CXX) main.cpp $(LFLAGS)
 
 clean:
 	rm *.o*

@@ -47,7 +47,6 @@ Obviamente, além das funcionalidades de cadastro de usuários e de reservas, o 
 * Ao confirmar se o usuário está cadastrado, o sistema informa se ele tem permissão de entrar no Linf e também informa para qual sala ele deve ir.
 * O número do usuário pode estar cadastrado, porém sua foto é muito diferente daquelas armazenadas no sistema. Com isso, o sistema avisa o operador e o guarda deveria pedir sua carteirinha para confirmar a identidade. Caso confirmada, o sistema captura mais fotos deste usuário para tornar o cadastro de fotos mais robusto.
 * O usuário não está cadastrado. Neste caso o segurança decide se cadastra-o como novo usuário (por exemplo, se a pessoa está lá para uma manutenção esporádica), ou se o impede de entrar no laboratório.
-Na caixa de texto abaixo, por favor indique o link do repositório Git que contém seu projeto.
 
 Seguindo os padrões anteriores, o projeto deverá conter programas e documentação. A documentação deve incluir diagramas de classe e ao menos um diagrama de sequência.
 
