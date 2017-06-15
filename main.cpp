@@ -1,4 +1,6 @@
 #include <iostream>
+#include "Usuario.hpp"
+#include "LINF.hpp"
 
 int drawMenu (int *n) {
 
@@ -19,10 +21,14 @@ int drawMenu (int *n) {
 
 int main() {
   int n;
+  LINF linf;
 
   drawMenu(&n);
   while(n != 4) {
     if(n == 1) {
+      Usuario usuario;
+      usuario.cadastrar();
+      linf.salvarUsuario(usuario);
       drawMenu(&n);
     }
     else if(n == 2) {
