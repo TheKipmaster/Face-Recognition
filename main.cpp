@@ -2,6 +2,25 @@
 #include "Usuario.hpp"
 #include "LINF.hpp"
 
+int drawSubMenu (int *n) {
+
+  system("clear");
+  std::cout << "\tOpa, tudo bom? Bem vindo ao LINF" << std::endl << std::endl;
+  std::cout << "1 - Novo Cadastro" << std::endl;
+  std::cout << "2 - Nova Reserva" << std::endl;
+  std::cout << "3 - Check DB" << std::endl;
+  std::cout << "\t3.1 - Index de Usuários" << std::endl;
+  std::cout << "\t3.2 - Index de Reservas" << std::endl;
+  std::cout << "\t3.3 - Voltar" << std::endl << "\t";
+	do {
+		std::cin >> *n;
+		if ( (*n > 3) || (*n < 1) )
+			std::cout << "\tEntrada inválida" << std::endl << "\t";
+	} while ( (*n > 3) || (*n < 1) );
+
+	return *n;
+}
+
 int drawMenu (int *n) {
 
   system("clear");
@@ -13,8 +32,8 @@ int drawMenu (int *n) {
 	do {
 		std::cin >> *n;
 		if ( (*n > 4) || (*n < 1) )
-			std::cout << "Tu é burro cara?" << std::endl;
-	} while ( (*n > 5) || (*n < 1) );
+			std::cout << "Entrada inválida" << std::endl;
+	} while ( (*n > 4) || (*n < 1) );
 
 	return *n;
 }
@@ -35,9 +54,17 @@ int main() {
       drawMenu(&n);
     }
     else if(n == 3) {
-      drawMenu(&n);
-    }
-    else if(n == 4) {
+      drawSubMenu(&n);
+      while(n != 3) {
+        if(n == 1) {
+          linf.indexUsuario();
+          drawSubMenu(&n);
+        }
+        else if(n == 2) {
+          // indexReserva();
+          drawSubMenu(&n);
+        }
+      }
       drawMenu(&n);
     }
   }

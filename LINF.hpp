@@ -15,9 +15,12 @@ public:
   LINF();
   ~LINF();
   void salvarUsuario(Usuario usuario);
+  // implementar busca direito
+  void indexUsuario();
+  // void indexReserva();
   Usuario getUsuario();
-  // Salvar reserva
-  // Buscar reserva
+  // salvarReserva();
+  // buscarReserva();
 };
 
 #endif
