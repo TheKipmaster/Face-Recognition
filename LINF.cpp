@@ -1,7 +1,13 @@
 #include "LINF.hpp"
 
 std::ostream& operator << (std::ostream& os, Usuario& u) {
-  os << u.getNome() << std::endl;
+  os << "Tipo: \t\t" << u.getTipoDeUsuario() << std::endl;
+  if(!u.getTipoDeUsuario().compare("aluno")) {
+    os << "Matricula: \t" << u.getId() << std::endl;
+  }
+  os << "Nome: \t\t" << u.getNome() << std::endl;
+  os << "Nome do Meio: \t" << u.getNomeDoMeio() << std::endl;
+  os << "Sobrenome: \t" << u.getSobrenome() << std::endl;
   return os;
 }
 
@@ -22,6 +28,7 @@ void LINF::indexUsuario() {
 
   system("clear");
 
+  std::cout << "--- LISTA DE CADASTROS DE USÁRIOS ---" << std::endl << std::endl;
   for(i = 0; i < cadastros_de_usuarios.size(); i++) {
     std::cout << cadastros_de_usuarios.at(i) << std::endl;
   }

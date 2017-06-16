@@ -9,12 +9,28 @@ tipo_de_usuario(Tipo_de_usuario) {}
 
 Usuario::~Usuario() {}
 
+std::string Usuario::getId() {
+	return id;
+}
+
 void Usuario::setNome(std::string Nome) {
 	nome = Nome;
 }
 
 std::string Usuario::getNome() {
 	return nome;
+}
+
+std::string Usuario::getSobrenome() {
+	return sobrenome;
+}
+
+std::string Usuario::getNomeDoMeio() {
+	return nome_do_meio;
+}
+
+std::string Usuario::getTipoDeUsuario() {
+	return tipo_de_usuario;
 }
 
 void Usuario::cadastrar() {
