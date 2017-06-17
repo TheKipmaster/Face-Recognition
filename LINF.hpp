@@ -18,7 +18,9 @@ public:
   // implementar busca direito
   void indexUsuario();
   // void indexReserva();
-  Usuario getUsuario();
+  // busca no banco baseado no número de identificação dele
+  void buscaUsuario();
+  Usuario getUsuario(std::string id);
   // salvarReserva();
   // buscarReserva();
 };

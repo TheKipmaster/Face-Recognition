@@ -19,8 +19,32 @@ void LINF::salvarUsuario(Usuario usuario) {
 }
 
 // implementar busca direito
-Usuario LINF::getUsuario() {
-  return cadastros_de_usuarios.at(0);
+Usuario LINF::getUsuario(std::string id) {
+  unsigned int i=0;
+  Usuario u;
+
+  while( (i < cadastros_de_usuarios.size()) && (cadastros_de_usuarios.at(i).getId().compare(id) != 0) ) {
+    i++;
+    if(cadastros_de_usuarios.at(i).getId().compare(id))
+      return cadastros_de_usuarios.at(i);
+  }
+  return u;
+}
+
+void LINF::buscaUsuario() {
+  std::string input;
+  Usuario usuario;
+
+  system("clear");
+  std::cout << "Informe o número de identificação do usuário: ";
+  std::cin >> input;
+  usuario = getUsuario(input);
+  if(usuario.getId().empty())
+    std::cout << "USUÁRIO NÃO ENCONTRADO" << std::endl;
+  else
+    std::cout << usuario;
+  getchar();
+  getchar();
 }
 
 void LINF::indexUsuario() {
