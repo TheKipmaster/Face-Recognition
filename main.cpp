@@ -11,13 +11,14 @@ int drawSubMenu (int *n) {
   std::cout << "3 - Check DB" << std::endl;
   std::cout << "\t3.1 - Index de Usuários" << std::endl;
   std::cout << "\t3.2 - Busca de Usuários" << std::endl;
-  std::cout << "\t3.3 - Index de Reservas" << std::endl;
-  std::cout << "\t3.4 - Voltar" << std::endl << "\t";
+  std::cout << "\t3.3 - Editar Usuários" << std::endl;
+  std::cout << "\t3.4 - Index de Reservas" << std::endl;
+  std::cout << "\t3.5 - Voltar" << std::endl << "\t";
 	do {
 		std::cin >> *n;
-		if ( (*n > 4) || (*n < 1) )
+		if ( (*n > 5) || (*n < 1) )
 			std::cout << "\tEntrada inválida" << std::endl << "\t";
-	} while ( (*n > 4) || (*n < 1) );
+	} while ( (*n > 5) || (*n < 1) );
 
 	return *n;
 }
@@ -56,7 +57,7 @@ int main() {
     }
     else if(n == 3) {
       drawSubMenu(&n);
-      while(n != 4) {
+      while(n != 5) {
         if(n == 1) {
           linf.indexUsuario();
           drawSubMenu(&n);
@@ -67,6 +68,10 @@ int main() {
           drawSubMenu(&n);
         }
         else if(n == 3) {
+          // editaUsuario();
+          drawSubMenu(&n);
+        }
+        else if(n == 4) {
           // indexReserva();
           drawSubMenu(&n);
         }
