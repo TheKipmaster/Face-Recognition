@@ -19,32 +19,31 @@ void LINF::salvarUsuario(Usuario usuario) {
 }
 
 // implementar busca direito
-Usuario LINF::getUsuario(std::string id) {
+int LINF::getUsuario(std::string id) {
   unsigned int i=0;
-  Usuario u;
+  // Usuario u;
 
   while( (i < cadastros_de_usuarios.size()) && (cadastros_de_usuarios.at(i).getId().compare(id) != 0) ) {
     i++;
   }
-  std::cout << "i: " << i << std::endl;
   if(i == cadastros_de_usuarios.size())
-    return u;
+    return -1;
   else
-    return cadastros_de_usuarios.at(i);
+    return i;
 }
 
 void LINF::buscaUsuario() {
   std::string input;
-  Usuario usuario;
+  int posicao_usuario;
 
   system("clear");
   std::cout << "Informe o número de identificação do usuário: ";
   std::cin >> input;
-  usuario = getUsuario(input);
-  if(usuario.getId().empty())
+  posicao_usuario = getUsuario(input);
+  if(posicao_usuario == -1)
     std::cout << "USUÁRIO NÃO ENCONTRADO" << std::endl;
   else
-    std::cout << usuario;
+    std::cout << cadastros_de_usuarios.at(posicao_usuario);
   getchar();
   getchar();
 }
@@ -60,4 +59,28 @@ void LINF::indexUsuario() {
   }
   getchar();
   getchar();
+}
+
+void LINF::editaUsuario() {
+  std::string atributo, parametro, id;
+  int posicao_usuario;
+
+  system("clear");
+  std::cout << "Informe o número de identificação do usuário: ";
+  std::cin >> id;
+  posicao_usuario = getUsuario(id);
+  if(posicao_usuario == -1)
+    std::cout << "USUÁRIO NÃO ENCONTRADO" << std::endl;
+  else {
+    std::cout << cadastros_de_usuarios.at(posicao_usuario);
+    std::cout << "Informe o parâmetro a ser modificado: ";
+    std::cin >> atributo;
+    std::cout << "Informe o novo valor de " << atributo << ": ";
+    std::cin >> parametro;
+    cadastros_de_usuarios.at(posicao_usuario).alteraParametro(atributo, parametro);
+    std::cout << cadastros_de_usuarios.at(posicao_usuario);
+  }
+  getchar();
+  getchar();
+
 }

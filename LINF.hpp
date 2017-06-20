@@ -14,15 +14,19 @@ private:
 public:
   LINF();
   ~LINF();
+  // insere um novo usuário no vector de usuários
   void salvarUsuario(Usuario usuario);
-  // implementar busca direito
-  void indexUsuario();
-  // void indexReserva();
   // busca no banco baseado no número de identificação dele
   void buscaUsuario();
-  Usuario getUsuario(std::string id);
-  // salvarReserva();
-  // buscarReserva();
+  // lista todo usuário salvo
+  void indexUsuario();
+  // retorna o usuário com o id indicado, se houver
+  int getUsuario(std::string id);
+  // edita um ítem do cadastro do usuário com o id indicado
+  void editaUsuario();
+  // void salvarReserva();
+  // void buscarReserva();
+  // void indexReserva();
 };
 
 #endif

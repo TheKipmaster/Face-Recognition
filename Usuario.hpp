@@ -35,6 +35,8 @@ public:
 	// getFoto
 	// setFoto
 	void cadastrar();
+  // lida com escolha do parâmetro a ser atualizado em LINF::editaUsuario
+	void alteraParametro(std::string atributo, std::string parametro);
 	// Tem permissão?
 	// Novas fotos
 	// Editar Cadastro

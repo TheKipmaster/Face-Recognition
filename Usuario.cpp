@@ -69,3 +69,16 @@ void Usuario::cadastrar() {
 	std::cout << "Informe o id do " << tipo_de_usuario << ": ";
 	std::cin >> id;
 }
+
+void Usuario::alteraParametro(std::string atributo, std::string parametro) {
+  if(atributo == "tipo" || atributo == "Tipo")
+    setTipoDeUsuario(parametro);
+  else if(atributo == "nome" || atributo == "Nome")
+    setNome(parametro);
+  else if(atributo == "nome do meio" || atributo == "Nome do Meio")
+    setNomeDoMeio(parametro);
+  else if(atributo == "sobrenome" || atributo == "Sobrenome")
+    setSobrenome(parametro);
+  else if(atributo == "matricula" || atributo == "Matricula" || atributo == "id" || atributo == "ID")
+    setId(parametro);
+}
