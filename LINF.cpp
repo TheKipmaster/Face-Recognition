@@ -26,10 +26,11 @@ Usuario LINF::getUsuario(std::string id) {
   while( (i < cadastros_de_usuarios.size()) && (cadastros_de_usuarios.at(i).getId().compare(id) != 0) ) {
     i++;
   }
-  if(!cadastros_de_usuarios.at(i).getId().compare(id))
-    return cadastros_de_usuarios.at(i);
-  else
+  std::cout << "i: " << i << std::endl;
+  if(i == cadastros_de_usuarios.size())
     return u;
+  else
+    return cadastros_de_usuarios.at(i);
 }
 
 void LINF::buscaUsuario() {
@@ -40,12 +41,10 @@ void LINF::buscaUsuario() {
   std::cout << "Informe o número de identificação do usuário: ";
   std::cin >> input;
   usuario = getUsuario(input);
-  if(usuario.getId().empty()) {
+  if(usuario.getId().empty())
     std::cout << "USUÁRIO NÃO ENCONTRADO" << std::endl;
-  }
-  else {
+  else
     std::cout << usuario;
-  }
   getchar();
   getchar();
 }
