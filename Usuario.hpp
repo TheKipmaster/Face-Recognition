@@ -28,12 +28,12 @@ public:
 	void setSobrenome(std::string Sobrenome);
 	std::string getNomeDoMeio();
 	void setNomeDoMeio(std::string Nome_do_meio);
+	std::string getTipoDeUsuario();
+	void setTipoDeUsuario(std::string Tipo_de_usuario);
 	// getReserva
 	// setReserva
 	// getFoto
 	// setFoto
-	std::string getTipoDeUsuario();
-	void setTipoDeUsuario(std::string Tipo_de_usuario);
 	void cadastrar();
 	// Tem permissão?
 	// Novas fotos
