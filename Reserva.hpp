@@ -10,7 +10,7 @@ class Reserva {
 
 private:
   Usuario criador;
-  std::string propósito;
+  std::string proposito;
   std::vector<int> numero_salas;
   std::string horario_inicio;
   std::string horario_fim;
@@ -21,8 +21,8 @@ private:
 public:
   Reserva();
   ~Reserva();
-  void setCriador(std::string Criador);
-  std::string getCriador();
+  void setCriador(Usuario Criador);
+  Usuario getCriador();
 
   void setProposito(std::string Proposito);
   std::string getProposito();
