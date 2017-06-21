@@ -21,6 +21,23 @@ private:
 public:
   Reserva();
   ~Reserva();
+  void setCriador(std::string Criador);
+  std::string getCriador();
+
+  void setProposito(std::string Proposito);
+  std::string getProposito();
+
+  void setHorarioInicio(std::string Horario_inicio);
+  std::string getHorarioInicio();
+
+  void setHorarioFim(std::string Horario_fim);
+  std::string getHorarioFim();
+
+  void setDataInicio(std::string Data_inicio);
+  std::string getDataInicio();
+
+  void setDataFim(std::string Data_fim);
+  std::string getDataFim();
   // void cadastrar();
 
 };
