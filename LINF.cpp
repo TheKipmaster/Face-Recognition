@@ -34,7 +34,7 @@ int LINF::getUsuario(std::string id) {
     return i;
 }
 
-void LINF::buscaUsuario() {
+int LINF::buscaUsuario() {
   std::string input;
   int posicao_usuario;
 
@@ -48,6 +48,7 @@ void LINF::buscaUsuario() {
     std::cout << cadastros_de_usuarios.at(posicao_usuario);
   getchar();
   getchar();
+  return posicao_usuario;
 }
 
 void LINF::indexUsuario() {
@@ -67,22 +68,16 @@ void LINF::editaUsuario() {
   std::string atributo, parametro, id;
   int posicao_usuario;
 
-  system("clear");
-  std::cout << "Informe o número de identificação do usuário: ";
-  std::cin >> id;
-  posicao_usuario = getUsuario(id);
-  if(posicao_usuario == -1)
-    std::cout << "USUÁRIO NÃO ENCONTRADO" << std::endl;
-  else {
-    std::cout << cadastros_de_usuarios.at(posicao_usuario);
+  posicao_usuario = buscaUsuario();
+  if(posicao_usuario != -1) {
     std::cout << "Informe o parâmetro a ser modificado: ";
     std::cin >> atributo;
     std::cout << "Informe o novo valor de " << atributo << ": ";
     std::cin >> parametro;
     cadastros_de_usuarios.at(posicao_usuario).alteraParametro(atributo, parametro);
     std::cout << cadastros_de_usuarios.at(posicao_usuario);
+    getchar();
+    getchar();
   }
-  getchar();
-  getchar();
 
 }

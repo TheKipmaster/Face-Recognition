@@ -17,7 +17,7 @@ public:
   // insere um novo usuário no vector de usuários
   void salvarUsuario(Usuario usuario);
   // busca no banco baseado no número de identificação dele
-  void buscaUsuario();
+  int buscaUsuario();
   // lista todo usuário salvo
   void indexUsuario();
   // retorna o usuário com o id indicado, se houver
