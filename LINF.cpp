@@ -2,9 +2,11 @@
 
 std::ostream& operator << (std::ostream& os, Usuario& u) {
   os << "Tipo: \t\t" << u.getTipoDeUsuario() << std::endl;
-  if(!u.getTipoDeUsuario().compare("aluno")) {
-    os << "Matricula: \t" << u.getId() << std::endl;
-  }
+  if(u.getTipoDeUsuario() == "aluno" || u.getTipoDeUsuario() == "professor")
+    os << "Matricula: \t";
+  else
+    os << "CPF: \t\t";
+  os << u.getId() << std::endl;
   os << "Nome: \t\t" << u.getNome() << std::endl;
   os << "Nome do Meio: \t" << u.getNomeDoMeio() << std::endl;
   os << "Sobrenome: \t" << u.getSobrenome() << std::endl;
@@ -23,7 +25,7 @@ int LINF::getUsuario(std::string id) {
   unsigned int i=0;
   // Usuario u;
 
-  while( (i < cadastros_de_usuarios.size()) && (cadastros_de_usuarios.at(i).getId().compare(id) != 0) ) {
+  while( (i < cadastros_de_usuarios.size()) && (cadastros_de_usuarios.at(i).getId() != id) ) {
     i++;
   }
   if(i == cadastros_de_usuarios.size())
