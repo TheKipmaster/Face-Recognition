@@ -16,9 +16,11 @@ Usuario.o: Usuario.hpp Usuario.cpp
 LINF.o: LINF.hpp LINF.cpp Usuario.hpp
 	$(CXX) LINF.cpp $(CFLAGS)
 
-teste.out: objectDetection.cpp
-	$(CXX) objectDetection.cpp $(LFLAGS) $(OPENCV) -o teste.out
+objectDetection.out: objectDetection.cpp
+	$(CXX) objectDetection.cpp $(LFLAGS) $(OPENCV) -o objectDetection.out
 
+test.out: test.cpp
+	$(CXX) test.cpp $(LFLAGS) $(OPENCV) -o test.out
 
 clean:
 	rm *.o*
