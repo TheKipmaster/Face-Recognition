@@ -121,3 +121,19 @@ void Reserva::cadastrar() {
     data_fim = data_inicio;
   }
 }
+
+void Reserva::addParticipante(Usuario usuario) {
+  participantes.push_back(usuario);
+}
+
+Usuario Reserva::getParticipante(std::string id) {
+  unsigned int i=0;
+
+  while( (i < participantes.size()) && (participantes.at(i).getId() != id) ) {
+    i++;
+  }
+  if(i == participantes.size())
+    return -1;
+  else
+    return i;
+}

@@ -50,6 +50,10 @@ public:
   void setDataFim(std::string Data_fim);
   std::string getDataFim();
 
+  void addParticipante(Usuario usuario);
+  Usuario removeParticipante(std::string);
+  Usuario getParticipante(std::string id);
+
   void cadastrar();
 
 };
