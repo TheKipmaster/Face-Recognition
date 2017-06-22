@@ -1,7 +1,9 @@
 #include <iostream>
 #include "Usuario.hpp"
+#include "Reserva.hpp"
 #include "LINF.hpp"
 
+<<<<<<< HEAD
 void loadUsers(LINF *linf) {
   Usuario usuario;
   std::ifstream ifs("bd.json");
@@ -22,7 +24,7 @@ void loadUsers(LINF *linf) {
 void saveRecords(LINF *linf) {
   int i;
   Json::Value usuarios;
-  Json::Value usuario;   
+  Json::Value usuario;
   Json::Value vec(Json::arrayValue);
   for(i=0;i < linf->usuariosCadastrados();i++){
     usuario["id"] = linf->getUsuario(i).getId();
@@ -31,14 +33,30 @@ void saveRecords(LINF *linf) {
     usuario["sobrenome"] = linf->getUsuario(i).getSobrenome();
     usuario["tipo"] = linf->getUsuario(i).getTipoDeUsuario();
     vec.append(Json::Value(usuario));
-    usuarios["usuarios"]=vec;  
+    usuarios["usuarios"]=vec;
   }
   std::fstream fs;
   fs.open ("bd.json", std::fstream::in | std::fstream::out);
-  
+
   fs << usuarios;
 
   fs.close();
+}
+
+void addParticipantes(Reserva *reserva, LINF linf) {
+  std::string input;
+  int posicao_usuario;
+
+  std::cout << "(pressione <ENTER> após cada entrada | digite 'sair' para terminar)" << std::endl;
+  do {
+    std::cout << "Informe o número de identificação dos participantes da reserva: ";
+    std::cin >> input;
+
+    if(input != "sair" && input != "Sair") {
+      posicao_usuario = linf.getUsuario(input);
+      reserva->addParticipante(linf.getUsuarios().at(posicao_usuario));
+    }
+  }while(input != "sair" && input != "Sair");
 }
 
 int drawSubMenu (int *n) {
@@ -69,12 +87,13 @@ int drawMenu (int *n) {
   std::cout << "1 - Novo Cadastro" << std::endl;
   std::cout << "2 - Nova Reserva" << std::endl;
   std::cout << "3 - Check DB" << std::endl;
-  std::cout << "4 - Sair" << std::endl;
+  std::cout << "4 - Solicitar Permissão" << std::endl;
+  std::cout << "5 - Sair" << std::endl;
 	do {
 		std::cin >> *n;
-		if ( (*n > 4) || (*n < 1) )
+		if ( (*n > 5) || (*n < 1) )
 			std::cout << "Entrada inválida" << std::endl;
-	} while ( (*n > 4) || (*n < 1) );
+	} while ( (*n > 5) || (*n < 1) );
 
 	return *n;
 }
@@ -84,7 +103,8 @@ int main() {
   LINF linf;
   loadUsers(&linf);
   drawMenu(&n);
-  while(n != 4) {
+  saveRecords(&linf);
+  while(n != 5) {
     if(n == 1) {
       Usuario usuario;
       usuario.cadastrar();
@@ -92,6 +112,10 @@ int main() {
       drawMenu(&n);
     }
     else if(n == 2) {
+      Reserva reserva;
+      reserva.cadastrar();
+      addParticipantes(&reserva, linf);
+      linf.salvarReserva(reserva);
       drawMenu(&n);
     }
     else if(n == 3) {
@@ -110,13 +134,16 @@ int main() {
           drawSubMenu(&n);
         }
         else if(n == 4) {
-          // indexReserva();
+          linf.indexReserva();
           drawSubMenu(&n);
         }
       }
       drawMenu(&n);
     }
-    saveRecords(&linf);
+    else if(n == 4) {
+      // linf.manejarEntrada();
+      drawMenu(&n);
+    }
   }
 
   return 0;

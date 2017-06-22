@@ -6,16 +6,20 @@
 #include <fstream>
 #include <jsoncpp/json/json.h>
 #include "Usuario.hpp"
+#include "Reserva.hpp"
 
 class LINF {
 
 private:
   std::vector<Usuario> cadastros_de_usuarios;
-  // std::vector<Reserva> cadastros_de_reserva;
+  std::vector<Reserva> cadastros_de_reservas;
 
 public:
   LINF();
   ~LINF();
+  std::vector<Usuario> getUsuarios();
+  std::vector<Reserva> getReservas();
+  
   // insere um novo usuário no vector de usuários
   void salvarUsuario(Usuario usuario);
   // busca no banco baseado no número de identificação dele
@@ -29,11 +33,18 @@ public:
   Usuario getUsuario(int i);
   // edita um ítem do cadastro do usuário com o id indicado
   void editaUsuario();
-  // void salvarReserva();
+
+  // insere uma nova reserva no vector de reservas
+  void salvarReserva(Reserva reserva);
   // void buscarReserva();
+<<<<<<< HEAD
   // void indexReserva();
   // salvarReserva();
   // buscarReserva();
+=======
+  void indexReserva();
+  void manejarEntrada();
+>>>>>>> reserva
 };
 
 #endif
