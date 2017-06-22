@@ -75,7 +75,7 @@ int main() {
           drawSubMenu(&n);
         }
         else if(n == 4) {
-          // indexReserva();
+          linf.indexReserva();
           drawSubMenu(&n);
         }
       }

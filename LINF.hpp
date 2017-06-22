@@ -10,7 +10,7 @@ class LINF {
 
 private:
   std::vector<Usuario> cadastros_de_usuarios;
-  std::vector<Reserva> cadastros_de_reserva;
+  std::vector<Reserva> cadastros_de_reservas;
 
 public:
   LINF();
@@ -29,7 +29,7 @@ public:
   // insere uma nova reserva no vector de reservas
   void salvarReserva(Reserva reserva);
   // void buscarReserva();
-  // void indexReserva();
+  void indexReserva();
 };
 
 #endif

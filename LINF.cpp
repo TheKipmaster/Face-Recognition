@@ -1,5 +1,14 @@
 #include "LINF.hpp"
 
+std::ostream& operator << (std::ostream& os, Reserva& r) {
+  os << "Reserva agendada por: " << r.getIdCriador() << std::endl;
+  os << "Propósito da reserva: " << r.getProposito() << std::endl;
+  os << "Salas ocupadas pela reserva: " << r.getNumeroSalas() << std::endl;
+  os << "Reserva ativa entre " << r.getHorarioInicio() << " do dia " << r.getDataInicio();
+  os << " e " << r.getHorarioFim() << " do dia " << r.getDataFim() << std::endl;
+  return os;
+}
+
 std::ostream& operator << (std::ostream& os, Usuario& u) {
   os << "Tipo: \t\t" << u.getTipoDeUsuario() << std::endl;
   if(u.getTipoDeUsuario() == "aluno" || u.getTipoDeUsuario() == "professor")
@@ -82,5 +91,18 @@ void LINF::editaUsuario() {
 }
 
 void LINF::salvarReserva(Reserva reserva) {
-  cadastros_de_reserva.push_back(reserva);
+  cadastros_de_reservas.push_back(reserva);
+}
+
+void LINF::indexReserva() {
+  unsigned int i;
+
+  system("clear");
+
+  std::cout << "--- LISTA DE RESERVAS AGENDADAS ---" << std::endl << std::endl;
+  for(i = 0; i < cadastros_de_reservas.size(); i++) {
+    std::cout << cadastros_de_reservas.at(i) << std::endl;
+  }
+  getchar();
+  getchar();
 }
