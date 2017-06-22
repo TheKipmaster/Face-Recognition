@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Usuario.hpp"
+#include "Reserva.hpp"
 #include "LINF.hpp"
 
 int drawSubMenu (int *n) {
@@ -53,6 +54,9 @@ int main() {
       drawMenu(&n);
     }
     else if(n == 2) {
+      Reserva reserva;
+      reserva.cadastrar();
+      linf.salvarReserva(reserva);
       drawMenu(&n);
     }
     else if(n == 3) {

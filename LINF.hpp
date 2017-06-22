@@ -4,12 +4,13 @@
 #include <vector>
 #include <string>
 #include "Usuario.hpp"
+#include "Reserva.hpp"
 
 class LINF {
 
 private:
   std::vector<Usuario> cadastros_de_usuarios;
-  // std::vector<Reserva> cadastros_de_reserva;
+  std::vector<Reserva> cadastros_de_reserva;
 
 public:
   LINF();
@@ -24,7 +25,9 @@ public:
   int getUsuario(std::string id);
   // edita um ítem do cadastro do usuário com o id indicado
   void editaUsuario();
-  // void salvarReserva();
+
+  // insere uma nova reserva no vector de reservas
+  void salvarReserva(Reserva reserva);
   // void buscarReserva();
   // void indexReserva();
 };

@@ -59,3 +59,29 @@ void Reserva::setDataFim(std::string Data_fim) {
 std::string Reserva::getDataFim() {
   return data_fim;
 }
+
+void Reserva::cadastrar() {
+	system("clear");
+
+	std::cout << "Informe o id do usuário criador da reserva: ";
+	std::cin >> id_criador;
+
+	std::cout << "Informe o propósito da reserva (se for uma disciplina, informe também seu código e sua turma): ";
+  getchar();
+	getline(std::cin, proposito);
+
+	std::cout << "Informe os números das salas a serem usadas: ";
+	getline(std::cin, numero_salas);
+
+  std::cout << "Informe o dia de início da reserva (dd/mm/aa): ";
+  std::cin >> data_inicio;
+
+	std::cout << "Informe o horário de início da reserva (24h): ";
+	std::cin >> horario_inicio;
+
+  std::cout << "Informe o dia de término da reserva (dd/mm/aa): ";
+  std::cin >> data_fim;
+
+	std::cout << "Informe o horário de término da reserva (24h): ";
+	std::cin >> horario_fim;
+}

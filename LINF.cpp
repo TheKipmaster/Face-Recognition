@@ -79,5 +79,8 @@ void LINF::editaUsuario() {
     getchar();
     getchar();
   }
+}
 
+void LINF::salvarReserva(Reserva reserva) {
+  cadastros_de_reserva.push_back(reserva);
 }
