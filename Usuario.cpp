@@ -9,6 +9,10 @@ tipo_de_usuario(Tipo_de_usuario) {}
 
 Usuario::~Usuario() {}
 
+void Usuario::setId(std::string Id) {
+	id = Id;
+}
+
 std::string Usuario::getId() {
 	return id;
 }
@@ -21,12 +25,24 @@ std::string Usuario::getNome() {
 	return nome;
 }
 
+void Usuario::setSobrenome(std::string Sobrenome) {
+	sobrenome = Sobrenome;
+}
+
 std::string Usuario::getSobrenome() {
 	return sobrenome;
 }
 
+void Usuario::setNomeDoMeio(std::string Nome_do_meio) {
+	nome_do_meio = Nome_do_meio;
+}
+
 std::string Usuario::getNomeDoMeio() {
 	return nome_do_meio;
+}
+
+void Usuario::setTipoDeUsuario(std::string Tipo_de_usuario) {
+	tipo_de_usuario = Tipo_de_usuario;
 }
 
 std::string Usuario::getTipoDeUsuario() {
