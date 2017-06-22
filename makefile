@@ -5,7 +5,7 @@ OPENCV = `pkg-config opencv --libs`
 LFLAGS = -Wall $(STD)
 CFLAGS = $(LFLAGS) -c
 
-all: LINF.o Usuario.o a.out teste.out
+all: LINF.o Usuario.o a.out test.out
 
 a.out: main.cpp Usuario.o LINF.o
 	$(CXX) main.cpp $(OBJS) $(LFLAGS)
