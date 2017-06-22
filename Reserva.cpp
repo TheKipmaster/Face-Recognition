@@ -4,12 +4,12 @@ Reserva::Reserva() {}
 
 Reserva::~Reserva() {}
 
-void Reserva::setCriador(Usuario Criador) {
-  criador = Criador;
+void Reserva::setIdCriador(std::string Id_criador) {
+  id_criador = Id_criador;
 }
 
-Usuario Reserva::getCriador() {
-  return criador;
+std::string Reserva::getIdCriador() {
+  return id_criador;
 }
 
 void Reserva::setProposito(std::string Proposito) {
@@ -18,6 +18,14 @@ void Reserva::setProposito(std::string Proposito) {
 
 std::string Reserva::getProposito() {
   return proposito;
+}
+
+void Reserva::setNumeroSalas(std::string Numero_salas) {
+  numero_salas = Numero_salas;
+}
+
+std::string Reserva::getNumeroSalas() {
+  return numero_salas;
 }
 
 void Reserva::setHorarioInicio(std::string Horario_inicio) {

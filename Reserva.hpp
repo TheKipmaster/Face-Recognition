@@ -9,9 +9,9 @@
 class Reserva {
 
 private:
-  Usuario criador;
+  std::string id_criador;
   std::string proposito;
-  std::vector<int> numero_salas;
+  std::string numero_salas;
   std::string horario_inicio;
   std::string horario_fim;
   std::string data_inicio;
@@ -21,11 +21,14 @@ private:
 public:
   Reserva();
   ~Reserva();
-  void setCriador(Usuario Criador);
-  Usuario getCriador();
+  void setIdCriador(std::string Id_criador);
+  std::string getIdCriador();
 
   void setProposito(std::string Proposito);
   std::string getProposito();
+
+  void setNumeroSalas(std::string Numero_salas);
+  std::string getNumeroSalas();
 
   void setHorarioInicio(std::string Horario_inicio);
   std::string getHorarioInicio();
@@ -38,7 +41,8 @@ public:
 
   void setDataFim(std::string Data_fim);
   std::string getDataFim();
-  // void cadastrar();
+
+  void cadastrar();
 
 };
 
