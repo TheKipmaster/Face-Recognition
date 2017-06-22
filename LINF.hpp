@@ -3,6 +3,8 @@
 
 #include <vector>
 #include <string>
+#include <fstream>
+#include <jsoncpp/json/json.h>
 #include "Usuario.hpp"
 
 class LINF {
@@ -15,10 +17,12 @@ public:
   LINF();
   ~LINF();
   void salvarUsuario(Usuario usuario);
+  int usuariosCadastrados();
   // implementar busca direito
   void indexUsuario();
   // void indexReserva();
   Usuario getUsuario();
+  Usuario getUsuario(int i);
   // salvarReserva();
   // buscarReserva();
 };

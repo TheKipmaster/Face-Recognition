@@ -23,6 +23,14 @@ Usuario LINF::getUsuario() {
   return cadastros_de_usuarios.at(0);
 }
 
+Usuario LINF::getUsuario(int i) {
+  return cadastros_de_usuarios.at(i);
+}
+
+int LINF::usuariosCadastrados(){
+  return cadastros_de_usuarios.size(); 
+}
+
 void LINF::indexUsuario() {
   unsigned int i;
 
