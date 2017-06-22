@@ -3,7 +3,6 @@
 #include "Reserva.hpp"
 #include "LINF.hpp"
 
-<<<<<<< HEAD
 void loadUsers(LINF *linf) {
   Usuario usuario;
   std::ifstream ifs("bd.json");
