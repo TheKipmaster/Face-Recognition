@@ -3,6 +3,8 @@
 
 #include <vector>
 #include <string>
+#include <fstream>
+#include <jsoncpp/json/json.h>
 #include "Usuario.hpp"
 
 class LINF {
@@ -18,15 +20,20 @@ public:
   void salvarUsuario(Usuario usuario);
   // busca no banco baseado no número de identificação dele
   int buscaUsuario();
+  // Retorna o número de usuários cadastrados
+  int usuariosCadastrados();
   // lista todo usuário salvo
   void indexUsuario();
   // retorna o usuário com o id indicado, se houver
   int getUsuario(std::string id);
+  Usuario getUsuario(int i);
   // edita um ítem do cadastro do usuário com o id indicado
   void editaUsuario();
   // void salvarReserva();
   // void buscarReserva();
   // void indexReserva();
+  // salvarReserva();
+  // buscarReserva();
 };
 
 #endif

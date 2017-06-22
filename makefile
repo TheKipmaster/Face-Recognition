@@ -2,7 +2,7 @@ CXX 	 = g++
 STD		 = -std=c++11
 OBJS   = Usuario.o LINF.o
 OPENCV = `pkg-config opencv --libs`
-LFLAGS = -Wall $(STD)
+LFLAGS = -Wall -ljsoncpp $(STD)
 CFLAGS = $(LFLAGS) -c
 
 all: LINF.o Usuario.o a.out test.out
@@ -24,3 +24,6 @@ test.out: test.cpp
 
 clean:
 	rm *.o*
+
+
+# g++ json.cpp -Wall -std=c++11 -ljsoncpp 
