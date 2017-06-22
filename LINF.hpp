@@ -15,6 +15,9 @@ private:
 public:
   LINF();
   ~LINF();
+  std::vector<Usuario> getUsuarios();
+  std::vector<Reserva> getReservas();
+  
   // insere um novo usuário no vector de usuários
   void salvarUsuario(Usuario usuario);
   // busca no banco baseado no número de identificação dele
@@ -30,6 +33,7 @@ public:
   void salvarReserva(Reserva reserva);
   // void buscarReserva();
   void indexReserva();
+  void manejarEntrada();
 };
 
 #endif

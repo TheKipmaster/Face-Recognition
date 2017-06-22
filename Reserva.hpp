@@ -50,9 +50,11 @@ public:
   void setDataFim(std::string Data_fim);
   std::string getDataFim();
 
+  std::vector<Usuario> getParticipantes();
+
   void addParticipante(Usuario usuario);
-  Usuario removeParticipante(std::string);
-  Usuario getParticipante(std::string id);
+  Usuario removeParticipantes(std::string);
+  int getParticipante(std::string id);
 
   void cadastrar();
 

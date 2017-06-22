@@ -76,6 +76,10 @@ std::string Reserva::getDataFim() {
   return data_fim;
 }
 
+std::vector<Usuario> Reserva::getParticipantes() {
+  return participantes;
+}
+
 void Reserva::cadastrar() {
   std::string input;
 
@@ -126,7 +130,7 @@ void Reserva::addParticipante(Usuario usuario) {
   participantes.push_back(usuario);
 }
 
-Usuario Reserva::getParticipante(std::string id) {
+int Reserva::getParticipante(std::string id) {
   unsigned int i=0;
 
   while( (i < participantes.size()) && (participantes.at(i).getId() != id) ) {

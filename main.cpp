@@ -3,6 +3,22 @@
 #include "Reserva.hpp"
 #include "LINF.hpp"
 
+void addParticipantes(Reserva *reserva, LINF linf) {
+  std::string input;
+  int posicao_usuario;
+
+  std::cout << "(pressione <ENTER> após cada entrada | digite 'sair' para terminar)" << std::endl;
+  do {
+    std::cout << "Informe o número de identificação dos participantes da reserva: ";
+    std::cin >> input;
+
+    if(input != "sair" && input != "Sair") {
+      posicao_usuario = linf.getUsuario(input);
+      reserva->addParticipante(linf.getUsuarios().at(posicao_usuario));
+    }
+  }while(input != "sair" && input != "Sair");
+}
+
 int drawSubMenu (int *n) {
 
   system("clear");
@@ -31,12 +47,13 @@ int drawMenu (int *n) {
   std::cout << "1 - Novo Cadastro" << std::endl;
   std::cout << "2 - Nova Reserva" << std::endl;
   std::cout << "3 - Check DB" << std::endl;
-  std::cout << "4 - Sair" << std::endl;
+  std::cout << "4 - Solicitar Permissão" << std::endl;
+  std::cout << "5 - Sair" << std::endl;
 	do {
 		std::cin >> *n;
-		if ( (*n > 4) || (*n < 1) )
+		if ( (*n > 5) || (*n < 1) )
 			std::cout << "Entrada inválida" << std::endl;
-	} while ( (*n > 4) || (*n < 1) );
+	} while ( (*n > 5) || (*n < 1) );
 
 	return *n;
 }
@@ -46,7 +63,7 @@ int main() {
   LINF linf;
 
   drawMenu(&n);
-  while(n != 4) {
+  while(n != 5) {
     if(n == 1) {
       Usuario usuario;
       usuario.cadastrar();
@@ -56,6 +73,7 @@ int main() {
     else if(n == 2) {
       Reserva reserva;
       reserva.cadastrar();
+      addParticipantes(&reserva, linf);
       linf.salvarReserva(reserva);
       drawMenu(&n);
     }
@@ -79,6 +97,10 @@ int main() {
           drawSubMenu(&n);
         }
       }
+      drawMenu(&n);
+    }
+    else if(n == 4) {
+      // linf.manejarEntrada();
       drawMenu(&n);
     }
   }
