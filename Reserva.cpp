@@ -44,6 +44,22 @@ std::string Reserva::getHorarioFim() {
   return horario_fim;
 }
 
+void Reserva::setRecorrente(bool Recorrente) {
+  recorrente = Recorrente;
+}
+
+bool Reserva::getRecorrente() {
+  return recorrente;
+}
+
+void Reserva::setDiasRecorrentes(std::string Dias_recorrentes) {
+  dias_recorrentes = Dias_recorrentes;
+}
+
+std::string Reserva::getDiasRecorrentes() {
+  return dias_recorrentes;
+}
+
 void Reserva::setDataInicio(std::string Data_inicio) {
   data_inicio = Data_inicio;
 }
@@ -61,6 +77,8 @@ std::string Reserva::getDataFim() {
 }
 
 void Reserva::cadastrar() {
+  std::string input;
+
 	system("clear");
 
 	std::cout << "Informe o id do usuário criador da reserva: ";
@@ -73,15 +91,33 @@ void Reserva::cadastrar() {
 	std::cout << "Informe os números das salas a serem usadas: ";
 	getline(std::cin, numero_salas);
 
-  std::cout << "Informe o dia de início da reserva (dd/mm/aa): ";
-  std::cin >> data_inicio;
+  std::cout << "Informe o horário de início da reserva (24h): ";
+  std::cin >> horario_inicio;
 
-	std::cout << "Informe o horário de início da reserva (24h): ";
-	std::cin >> horario_inicio;
+  std::cout << "Informe o horário de término da reserva (24h): ";
+  std::cin >> horario_fim;
 
-  std::cout << "Informe o dia de término da reserva (dd/mm/aa): ";
-  std::cin >> data_fim;
+  std::cout << "Informe se a reserva é recorrente (sim ou não): ";
+  std::cin >> input;
 
-	std::cout << "Informe o horário de término da reserva (24h): ";
-	std::cin >> horario_fim;
+  if(input == "sim" || input == "Sim") {
+    recorrente = true;
+
+    std::cout << "Informe os dias recorrentes da reserva: ";
+    getchar();
+    getline(std::cin, dias_recorrentes);
+
+    std::cout << "Informe o dia de início da reserva (dd/mm/aa): ";
+    std::cin >> data_inicio;
+
+    std::cout << "Informe o dia de término da reserva (dd/mm/aa): ";
+    std::cin >> data_fim;
+  }
+  else {
+    recorrente = false;
+
+    std::cout << "Informe o dia da reserva (dd/mm/aa): ";
+    std::cin >> data_inicio;
+    data_fim = data_inicio;
+  }
 }

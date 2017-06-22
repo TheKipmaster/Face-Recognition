@@ -14,6 +14,8 @@ private:
   std::string numero_salas;
   std::string horario_inicio;
   std::string horario_fim;
+  bool recorrente;
+  std::string dias_recorrentes;
   std::string data_inicio;
   std::string data_fim;
   std::vector<Usuario> participantes;
@@ -35,6 +37,12 @@ public:
 
   void setHorarioFim(std::string Horario_fim);
   std::string getHorarioFim();
+
+  void setRecorrente(bool Recorrente);
+  bool getRecorrente();
+
+  void setDiasRecorrentes(std::string Dias_recorrentes);
+  std::string getDiasRecorrentes();
 
   void setDataInicio(std::string Data_inicio);
   std::string getDataInicio();

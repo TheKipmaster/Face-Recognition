@@ -4,8 +4,15 @@ std::ostream& operator << (std::ostream& os, Reserva& r) {
   os << "Reserva agendada por: " << r.getIdCriador() << std::endl;
   os << "Propósito da reserva: " << r.getProposito() << std::endl;
   os << "Salas ocupadas pela reserva: " << r.getNumeroSalas() << std::endl;
-  os << "Reserva ativa entre " << r.getHorarioInicio() << " do dia " << r.getDataInicio();
-  os << " e " << r.getHorarioFim() << " do dia " << r.getDataFim() << std::endl;
+  if(r.getRecorrente()) {
+    os << "Reserva ativa todo(a) " << r.getDiasRecorrentes() << ", das ";
+    os << r.getHorarioInicio() << " ás " << r.getHorarioFim() << ", a partir do dia ";
+    os << r.getDataInicio() << " e terminando no dia " << r.getDataFim() << std::endl;
+  }
+  else {
+    os << "Reserva ativa das " << r.getHorarioInicio() << " ás " << r.getHorarioFim();
+    os << " do dia " << r.getDataInicio() << std::endl;
+  }
   return os;
 }
 
