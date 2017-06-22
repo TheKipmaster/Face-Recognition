@@ -51,6 +51,14 @@ int LINF::buscaUsuario() {
   return posicao_usuario;
 }
 
+Usuario LINF::getUsuario(int i) {
+  return cadastros_de_usuarios.at(i);
+}
+
+int LINF::usuariosCadastrados(){
+  return cadastros_de_usuarios.size(); 
+}
+
 void LINF::indexUsuario() {
   unsigned int i;
 

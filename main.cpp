@@ -2,6 +2,45 @@
 #include "Usuario.hpp"
 #include "LINF.hpp"
 
+void loadUsers(LINF *linf) {
+  Usuario usuario;
+  std::ifstream ifs("bd.json");
+  Json::Reader reader;
+  Json::Value obj;
+  reader.parse(ifs, obj); // reader can also read strings
+  const Json::Value& usuarios = obj["usuarios"]; // array of characters
+  for (unsigned int i = 0; i < usuarios.size(); i++){
+    usuario.setId(usuarios[i]["id"].asString());
+    usuario.setNome(usuarios[i]["nome"].asString());
+    usuario.setNomeDoMeio(usuarios[i]["nome_do_meio"].asString());
+    usuario.setSobrenome(usuarios[i]["sobrenome"].asString());
+    usuario.setTipoDeUsuario(usuarios[i]["tipo"].asString());
+    linf->salvarUsuario(usuario);
+  }
+}
+
+void saveRecords(LINF *linf) {
+  int i;
+  Json::Value usuarios;
+  Json::Value usuario;   
+  Json::Value vec(Json::arrayValue);
+  for(i=0;i < linf->usuariosCadastrados();i++){
+    usuario["id"] = linf->getUsuario(i).getId();
+    usuario["nome"] = linf->getUsuario(i).getNome();
+    usuario["nome_do_meio"] = linf->getUsuario(i).getNomeDoMeio();
+    usuario["sobrenome"] = linf->getUsuario(i).getSobrenome();
+    usuario["tipo"] = linf->getUsuario(i).getTipoDeUsuario();
+    vec.append(Json::Value(usuario));
+    usuarios["usuarios"]=vec;  
+  }
+  std::fstream fs;
+  fs.open ("bd.json", std::fstream::in | std::fstream::out);
+  
+  fs << usuarios;
+
+  fs.close();
+}
+
 int drawSubMenu (int *n) {
 
   system("clear");
@@ -43,7 +82,7 @@ int drawMenu (int *n) {
 int main() {
   int n;
   LINF linf;
-
+  loadUsers(&linf);
   drawMenu(&n);
   while(n != 4) {
     if(n == 1) {
@@ -77,6 +116,7 @@ int main() {
       }
       drawMenu(&n);
     }
+    saveRecords(&linf);
   }
 
   return 0;
