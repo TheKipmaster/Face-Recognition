@@ -102,8 +102,8 @@ int main() {
   LINF linf;
   loadUsers(&linf);
   drawMenu(&n);
-  saveRecords(&linf);
   while(n != 5) {
+    saveRecords(&linf);
     if(n == 1) {
       Usuario usuario;
       usuario.cadastrar();
