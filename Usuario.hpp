@@ -12,7 +12,7 @@ private:
 	std::string nome;
 	std::string sobrenome;
 	std::string nome_do_meio;
-	// Vector de reservas
+	std::vector<int> posicoes_reservas;
 	// Vector de fotos;
 	std::string tipo_de_usuario;
 
@@ -28,6 +28,8 @@ public:
 	void setSobrenome(std::string Sobrenome);
 	std::string getNomeDoMeio();
 	void setNomeDoMeio(std::string Nome_do_meio);
+	std::vector<int> getPosicoesReservas();
+	void participarReserva(int posicao_reserva);
 	std::string getTipoDeUsuario();
 	void setTipoDeUsuario(std::string Tipo_de_usuario);
 	// getReserva
@@ -37,7 +39,6 @@ public:
 	void cadastrar();
   // lida com escolha do parâmetro a ser atualizado em LINF::editaUsuario
 	void alteraParametro(std::string atributo, std::string parametro);
-	// Tem permissão?
 	// Novas fotos
 	// Editar Cadastro
 };

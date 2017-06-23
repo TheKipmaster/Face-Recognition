@@ -41,6 +41,10 @@ std::string Usuario::getNomeDoMeio() {
 	return nome_do_meio;
 }
 
+std::vector<int> Usuario::getPosicoesReservas() {
+	return posicoes_reservas;
+}
+
 void Usuario::setTipoDeUsuario(std::string Tipo_de_usuario) {
 	tipo_de_usuario = Tipo_de_usuario;
 }
@@ -81,4 +85,8 @@ void Usuario::alteraParametro(std::string atributo, std::string parametro) {
     setSobrenome(parametro);
   else if(atributo == "matricula" || atributo == "Matricula" || atributo == "id" || atributo == "ID")
     setId(parametro);
+}
+
+void Usuario::participarReserva(int posicao_reserva) {
+	posicoes_reservas.push_back(posicao_reserva);
 }

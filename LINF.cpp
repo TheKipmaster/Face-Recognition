@@ -43,8 +43,8 @@ std::ostream& operator << (std::ostream& os, Reserva& r) {
 LINF::LINF() {}
 LINF::~LINF() {}
 
-std::vector<Usuario> LINF::getUsuarios() {
-  return cadastros_de_usuarios;
+std::vector<Usuario>* LINF::getUsuarios() {
+  return &cadastros_de_usuarios;
 }
 
 std::vector<Reserva> LINF::getReservas() {
@@ -90,7 +90,7 @@ Usuario LINF::getUsuario(int i) {
 }
 
 int LINF::usuariosCadastrados(){
-  return cadastros_de_usuarios.size(); 
+  return cadastros_de_usuarios.size();
 }
 
 void LINF::indexUsuario() {
@@ -139,16 +139,24 @@ void LINF::indexReserva() {
   getchar();
   getchar();
 }
-//
-// void manejarEntrada() {
-//   std::string input;
-//   int posicao_usuario;
-//
-//   system("clear");
-//
-//   std::cout << "Informe o número de identificação do usuário solicitando entrada: ";
-//   std::cin >> input;
-//
-//   posicao_usuario = getUsuario(input);
-//
-// }
+
+void LINF::manejarEntrada() {
+  std::string input;
+  int posicao_usuario, posicao_reserva;
+  unsigned int i;
+
+  do {
+    posicao_usuario = buscaUsuario();
+    std::cout << "Este é o usuário que estava procurando? (S/N) ";
+    std::cin >> input;
+  }while(input != "S" && input != "s");
+
+  std::cout << "Este usuário está cadastrado como participante das seguintes reservas: " << std::endl << std::endl;
+  for(i=0; i<cadastros_de_usuarios.at(posicao_usuario).getPosicoesReservas().size(); i++) {
+    posicao_reserva = cadastros_de_usuarios.at(posicao_usuario).getPosicoesReservas().at(i);
+    std::cout << cadastros_de_reservas.at(posicao_reserva) << std::endl;
+  }
+  getchar();
+  getchar();
+
+}

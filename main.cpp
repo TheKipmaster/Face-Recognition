@@ -42,7 +42,7 @@ void saveRecords(LINF *linf) {
   fs.close();
 }
 
-void addParticipantes(Reserva *reserva, LINF linf) {
+void addParticipantes(Reserva *reserva, LINF *linf) {
   std::string input;
   int posicao_usuario;
 
@@ -52,8 +52,9 @@ void addParticipantes(Reserva *reserva, LINF linf) {
     std::cin >> input;
 
     if(input != "sair" && input != "Sair") {
-      posicao_usuario = linf.getUsuario(input);
-      reserva->addParticipante(linf.getUsuarios().at(posicao_usuario));
+      posicao_usuario = linf->getUsuario(input);
+      reserva->addParticipante(linf->getUsuarios()->at(posicao_usuario));
+      linf->getUsuarios()->at(posicao_usuario).participarReserva(linf->getReservas().size());
     }
   }while(input != "sair" && input != "Sair");
 }
@@ -113,7 +114,7 @@ int main() {
     else if(n == 2) {
       Reserva reserva;
       reserva.cadastrar();
-      addParticipantes(&reserva, linf);
+      addParticipantes(&reserva, &linf);
       linf.salvarReserva(reserva);
       drawMenu(&n);
     }
@@ -140,7 +141,7 @@ int main() {
       drawMenu(&n);
     }
     else if(n == 4) {
-      // linf.manejarEntrada();
+      linf.manejarEntrada();
       drawMenu(&n);
     }
   }
