@@ -1,0 +1,54 @@
+{
+	"reservas" : 
+	[
+		{
+			"data_fim" : "10/10/10",
+			"data_inicio" : "10/10/10",
+			"dias_recorrentes" : "",
+			"horario_fim" : "13:00",
+			"horario_inicio" : "12:00",
+			"id_criador" : "160050521",
+			"numero_salas" : "1",
+			"participantes" : 
+			[
+				{
+					"id" : "160050521",
+					"nome" : "Felippe",
+					"nome_do_meio" : "Kipman",
+					"sobrenome" : "Carvalho",
+					"tipo" : "aluno"
+				}
+			],
+			"proposito" : "aula",
+			"recorrente" : false
+		},
+		{
+			"data_fim" : "12/12/12",
+			"data_inicio" : "12/12/12",
+			"dias_recorrentes" : "",
+			"horario_fim" : "16:00",
+			"horario_inicio" : "15:00",
+			"id_criador" : "160026270",
+			"numero_salas" : "2",
+			"participantes" : 
+			[
+				{
+					"id" : "160050521",
+					"nome" : "Felippe",
+					"nome_do_meio" : "Kipman",
+					"sobrenome" : "Carvalho",
+					"tipo" : "aluno"
+				},
+				{
+					"id" : "160026270",
+					"nome" : "Danilo",
+					"nome_do_meio" : "de Lima",
+					"sobrenome" : "Cabrinha",
+					"tipo" : "aluno"
+				}
+			],
+			"proposito" : "aula",
+			"recorrente" : false
+		}
+	]
+}

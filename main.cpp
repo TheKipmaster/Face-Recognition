@@ -5,7 +5,7 @@
 
 void loadUsers(LINF *linf) {
   Usuario usuario;
-  std::ifstream ifs("bd.json");
+  std::ifstream ifs("usuarios.json");
   Json::Reader reader;
   Json::Value obj;
   reader.parse(ifs, obj); // reader can also read strings
@@ -18,6 +18,38 @@ void loadUsers(LINF *linf) {
     usuario.setTipoDeUsuario(usuarios[i]["tipo"].asString());
     linf->salvarUsuario(usuario);
   }
+}
+
+void loadReservas(LINF *linf) {
+
+  Reserva reserva;
+  Usuario usuario;
+  std::ifstream ifs("reservas.json");
+  Json::Reader reader;
+  Json::Value obj;
+  reader.parse(ifs, obj); // reader can also read strings
+  const Json::Value& reservas = obj["reservas"];
+  for (unsigned int i = 0; i < reservas.size(); i++){
+    reserva.setIdCriador(reservas[i]["id_criador"].asString());
+    reserva.setProposito(reservas[i]["proposito"].asString());
+    reserva.setNumeroSalas(reservas[i]["numero_salas"].asString());
+    reserva.setHorarioInicio(reservas[i]["horario_inicio"].asString());
+    reserva.setHorarioFim(reservas[i]["horario_fim"].asString());
+    reserva.setRecorrente(reservas[i]["recorrente"].asBool());
+    reserva.setDiasRecorrentes(reservas[i]["dias_recorrentes"].asString());
+    reserva.setDataInicio(reservas[i]["data_inicio"].asString());
+    reserva.setDataFim(reservas[i]["data_fim"].asString());    
+    for (unsigned int j = 0; j < reservas[i]["participantes"].size(); j++){
+      usuario.setId(reservas[i]["participantes"][j]["id"].asString());
+      usuario.setNome(reservas[i]["participantes"][j]["nome"].asString());
+      usuario.setNomeDoMeio(reservas[i]["participantes"][j]["nome_do_meio"].asString());
+      usuario.setSobrenome(reservas[i]["participantes"][j]["sobrenome"].asString());
+      usuario.setTipoDeUsuario(reservas[i]["participantes"][j]["tipo"].asString());
+      reserva.addParticipante(usuario);
+    }
+    linf->salvarReserva(reserva);
+  }
+
 }
 
 void saveRecords(LINF *linf) {
@@ -35,9 +67,51 @@ void saveRecords(LINF *linf) {
     usuarios["usuarios"]=vec;
   }
   std::fstream fs;
-  fs.open ("bd.json", std::fstream::in | std::fstream::out);
+  fs.open ("usuarios.json", std::fstream::in | std::fstream::out);
 
   fs << usuarios;
+
+  fs.close();
+}
+
+void saveReservas(LINF *linf) {
+  unsigned int i, j;
+  Json::Value reservas;
+  Json::Value reserva;
+  Json::Value usuario;
+  Json::Value vec(Json::arrayValue);
+  Json::Value vec1(Json::arrayValue);
+
+  for(i=0;i < linf->getReservas().size();i++){
+
+    reserva["id_criador"] = linf->indexReserva(i).getIdCriador();
+    reserva["proposito"] = linf->indexReserva(i).getProposito();
+    reserva["numero_salas"] = linf->indexReserva(i).getNumeroSalas();
+    reserva["horario_inicio"] = linf->indexReserva(i).getHorarioInicio();
+    reserva["horario_fim"] = linf->indexReserva(i).getHorarioFim();
+    reserva["recorrente"] = linf->indexReserva(i).getRecorrente();
+    reserva["dias_recorrentes"] = linf->indexReserva(i).getDiasRecorrentes();
+    reserva["data_inicio"] = linf->indexReserva(i).getDataInicio();
+    reserva["data_fim"] = linf->indexReserva(i).getDataFim();
+
+    for(j=0; j < linf->indexReserva(i).getParticipantes().size(); j++){
+      usuario["id"] =  linf->indexReserva(i).getParticipante(j).getId();
+      usuario["nome"] = linf->indexReserva(i).getParticipante(j).getNome();
+      usuario["nome_do_meio"] = linf->indexReserva(i).getParticipante(j).getNomeDoMeio();
+      usuario["sobrenome"] = linf->indexReserva(i).getParticipante(j).getSobrenome();
+      usuario["tipo"] = linf->indexReserva(i).getParticipante(j).getTipoDeUsuario();
+      vec1.append(Json::Value(usuario));
+      reserva["participantes"] = vec1;
+    }
+
+    vec.append(Json::Value(reserva));
+    reservas["reservas"]= vec;
+  }
+  
+  std::fstream fs;
+  fs.open ("reservas.json", std::fstream::in | std::fstream::out);
+
+  fs << reservas;
 
   fs.close();
 }
@@ -101,9 +175,12 @@ int main() {
   int n;
   LINF linf;
   loadUsers(&linf);
+  loadReservas(&linf);
+
   drawMenu(&n);
   while(n != 5) {
     saveRecords(&linf);
+    saveReservas(&linf);
     if(n == 1) {
       Usuario usuario;
       usuario.cadastrar();

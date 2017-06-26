@@ -38,6 +38,7 @@ public:
   void salvarReserva(Reserva reserva);
   // void buscarReserva();
   void indexReserva();
+  Reserva indexReserva(int i);
   void manejarEntrada();
 };
 
