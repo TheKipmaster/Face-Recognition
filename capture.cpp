@@ -111,7 +111,7 @@ void detectAndDisplay(Mat frame, string nome)
             imshow("detected", crop);
         else
             destroyWindow("detected");
-
+        char key = (char) waitKey(500);
         imwrite(caminho, gray);   
 
         // Point pt1(faces[ic].x, faces[ic].y); // Display detected faces on main window - live stream from camera
@@ -119,8 +119,6 @@ void detectAndDisplay(Mat frame, string nome)
         // rectangle(frame, pt1, pt2, Scalar(0, 255, 0), 2, 8, 0);
     }
     
-    if(waitKey(30) >= 0){
-        destroyWindow("detected");
-    } 
+    
     
 }
