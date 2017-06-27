@@ -1,3 +1,7 @@
+/*! @file Reserva.hpp
+ *  @brief Definição da classe Reserva
+ */
+
 #ifndef _RESERVATION_HPP_
 #define _RESERVATION_HPP_
 
@@ -11,11 +15,11 @@ class Reserva {
 private:
   std::string id_criador;
   std::string proposito;
-  std::string numero_salas;
+  std::string numero_salas; ///< número de cada sala reservada
   std::string horario_inicio;
   std::string horario_fim;
-  bool recorrente;
-  std::string dias_recorrentes;
+  bool recorrente; ///< diz se a reserva se repete ou não
+  std::string dias_recorrentes; ///< diz em quais dias a reserva se repete
   std::string data_inicio;
   std::string data_fim;
   std::vector<Usuario> participantes;
@@ -51,9 +55,10 @@ public:
   std::string getDataFim();
 
   std::vector<Usuario> getParticipantes();
-
+  /// método para adicionar ítens no vector participantes
   void addParticipante(Usuario usuario);
   Usuario removeParticipantes(std::string);
+
   int getParticipante(std::string id);
   Usuario getParticipante(int i);
 

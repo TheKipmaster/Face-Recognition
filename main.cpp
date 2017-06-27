@@ -1,9 +1,13 @@
+/*! @file main.hpp
+ *  @brief Implementação do loop principal e de funções de integração
+ */
+
 #include <iostream>
 #include "Usuario.hpp"
 #include "Reserva.hpp"
 #include "LINF.hpp"
 
-void loadUsers(LINF *linf) {
+void loadUsuarios(LINF *linf) {
   Usuario usuario;
   std::ifstream ifs("usuarios.json");
   Json::Reader reader;
@@ -38,7 +42,7 @@ void loadReservas(LINF *linf) {
     reserva.setRecorrente(reservas[i]["recorrente"].asBool());
     reserva.setDiasRecorrentes(reservas[i]["dias_recorrentes"].asString());
     reserva.setDataInicio(reservas[i]["data_inicio"].asString());
-    reserva.setDataFim(reservas[i]["data_fim"].asString());    
+    reserva.setDataFim(reservas[i]["data_fim"].asString());
     for (unsigned int j = 0; j < reservas[i]["participantes"].size(); j++){
       usuario.setId(reservas[i]["participantes"][j]["id"].asString());
       usuario.setNome(reservas[i]["participantes"][j]["nome"].asString());
@@ -52,7 +56,7 @@ void loadReservas(LINF *linf) {
 
 }
 
-void saveRecords(LINF *linf) {
+void saveUsuarios(LINF *linf) {
   int i;
   Json::Value usuarios;
   Json::Value usuario;
@@ -107,7 +111,7 @@ void saveReservas(LINF *linf) {
     vec.append(Json::Value(reserva));
     reservas["reservas"]= vec;
   }
-  
+
   std::fstream fs;
   fs.open ("reservas.json", std::fstream::in | std::fstream::out);
 
@@ -116,7 +120,8 @@ void saveReservas(LINF *linf) {
   fs.close();
 }
 
-void addParticipantes(Reserva *reserva, LINF linf) {
+/// relaciona uma reserva com os usuários indicados e vice-versa
+void addParticipantes(Reserva *reserva, LINF *linf) {
   std::string input;
   int posicao_usuario;
 
@@ -126,12 +131,14 @@ void addParticipantes(Reserva *reserva, LINF linf) {
     std::cin >> input;
 
     if(input != "sair" && input != "Sair") {
-      posicao_usuario = linf.getUsuario(input);
-      reserva->addParticipante(linf.getUsuarios().at(posicao_usuario));
+      posicao_usuario = linf->getUsuario(input);
+      reserva->addParticipante(linf->getUsuarios()->at(posicao_usuario));
+      linf->getUsuarios()->at(posicao_usuario).participarReserva(linf->getReservas().size());
     }
   }while(input != "sair" && input != "Sair");
 }
 
+/// desenha o menu principal na tela
 int drawSubMenu (int *n) {
 
   system("clear");
@@ -153,6 +160,7 @@ int drawSubMenu (int *n) {
 	return *n;
 }
 
+/// desenha o menu secundário criado pela opção três do menu principal
 int drawMenu (int *n) {
 
   system("clear");
@@ -174,12 +182,12 @@ int drawMenu (int *n) {
 int main() {
   int n;
   LINF linf;
-  loadUsers(&linf);
+  loadUsuarios(&linf);
   loadReservas(&linf);
 
   drawMenu(&n);
   while(n != 5) {
-    saveRecords(&linf);
+    saveUsuarios(&linf);
     saveReservas(&linf);
     if(n == 1) {
       Usuario usuario;
@@ -190,7 +198,7 @@ int main() {
     else if(n == 2) {
       Reserva reserva;
       reserva.cadastrar();
-      addParticipantes(&reserva, linf);
+      addParticipantes(&reserva, &linf);
       linf.salvarReserva(reserva);
       drawMenu(&n);
     }
@@ -217,7 +225,7 @@ int main() {
       drawMenu(&n);
     }
     else if(n == 4) {
-      // linf.manejarEntrada();
+      linf.manejarEntrada();
       drawMenu(&n);
     }
   }

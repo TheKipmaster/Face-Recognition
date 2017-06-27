@@ -1,3 +1,7 @@
+/*! @file Reserva.cpp
+ *  @brief Implementação da classe Reserva
+ */
+
 #include "Reserva.hpp"
 
 Reserva::Reserva() {}
