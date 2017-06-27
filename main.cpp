@@ -1,3 +1,7 @@
+/*! @file main.hpp
+ *  @brief Implementação do loop principal e de funções de integração
+ */
+
 #include <iostream>
 #include "Usuario.hpp"
 #include "Reserva.hpp"
@@ -42,6 +46,7 @@ void saveRecords(LINF *linf) {
   fs.close();
 }
 
+/// relaciona uma reserva com os usuários indicados e vice-versa
 void addParticipantes(Reserva *reserva, LINF *linf) {
   std::string input;
   int posicao_usuario;
@@ -59,6 +64,7 @@ void addParticipantes(Reserva *reserva, LINF *linf) {
   }while(input != "sair" && input != "Sair");
 }
 
+/// desenha o menu principal na tela
 int drawSubMenu (int *n) {
 
   system("clear");
@@ -80,6 +86,7 @@ int drawSubMenu (int *n) {
 	return *n;
 }
 
+/// desenha o menu secundário criado pela opção três do menu principal
 int drawMenu (int *n) {
 
   system("clear");

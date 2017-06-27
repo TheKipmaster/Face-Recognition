@@ -1,3 +1,7 @@
+/*! @file LINF.cpp
+ *  @brief Implementação da classe LINF
+ */
+
 #include "LINF.hpp"
 
 std::ostream& operator << (std::ostream& os, Usuario& u) {

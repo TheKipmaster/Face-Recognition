@@ -1,3 +1,7 @@
+/*! @file Usuario.cpp
+ *  @brief Implementação da classe Usuario
+ */
+
 #include "Usuario.hpp"
 
 Usuario::Usuario(){}
