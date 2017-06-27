@@ -55,6 +55,7 @@ public:
   void addParticipante(Usuario usuario);
   Usuario removeParticipantes(std::string);
   int getParticipante(std::string id);
+  Usuario getParticipante(int i);
 
   void cadastrar();
 

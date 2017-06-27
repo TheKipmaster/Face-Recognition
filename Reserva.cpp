@@ -141,3 +141,7 @@ int Reserva::getParticipante(std::string id) {
   else
     return i;
 }
+
+Usuario Reserva::getParticipante(int i) {
+  return participantes[i];
+}

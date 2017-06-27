@@ -139,6 +139,10 @@ void LINF::indexReserva() {
   getchar();
   getchar();
 }
+
+Reserva LINF::indexReserva(int i) {
+  return cadastros_de_reservas.at(i);
+}
 //
 // void manejarEntrada() {
 //   std::string input;
