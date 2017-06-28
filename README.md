@@ -31,19 +31,19 @@ Para instalar JsonCpp, digite o seguinte comando em seu terminal:
 # Funcionamento do Sistema
 
 *Menu Principal*
-![funcionamento1](screenshots/Screenshot from 2017-06-28 14-51-59.png "Menu Principal")
+![funcionamento1](screenshots/1.png "Menu Principal")
 
 *Criando Um Novo Usuário*
-![funcionamento2](screenshots/Screenshot from 2017-06-28 14-52-40.png "Criando Um Novo Usuário")
+![funcionamento2](screenshots/2.png "Criando Um Novo Usuário")
 
 *Criando Uma Nova Reserva*
-![funcionamento3](screenshots/Screenshot from 2017-06-28 14-54-56.png "Criando Uma Nova Reserva")
+![funcionamento3](screenshots/3.png "Criando Uma Nova Reserva")
 
 *Sub-Menu*
-![funcionamento4](screenshots/Screenshot from 2017-06-28 14-52-47.png "Sub-Menu")
+![funcionamento4](screenshots/4.png "Sub-Menu")
 
 *Index de Usuário*
-![funcionamento4](screenshots/Screenshot from 2017-06-28 14-52-57.png "Sub-Menu")
+![funcionamento5](screenshots/5.png "Index de Usuário")
 
 *Index de Reservas*
-![funcionamento4](screenshots/Screenshot from 2017-06-28 14-59-04.png "Sub-Menu")
+![funcionamento6](screenshots/6.png "Index de Reservas")
