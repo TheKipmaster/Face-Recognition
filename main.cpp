@@ -33,6 +33,9 @@ void loadUsuarios(LINF *linf) {
     usuario.setNomeDoMeio(usuarios[i]["nome_do_meio"].asString());
     usuario.setSobrenome(usuarios[i]["sobrenome"].asString());
     usuario.setTipoDeUsuario(usuarios[i]["tipo"].asString());
+    for(unsigned int j=0; j < usuarios[i]["posicoes_reservas"].size();j++){
+      usuario.participarReserva(usuarios[i]["posicoes_reservas"][j].asUInt());
+    }
     linf->salvarUsuario(usuario);
   }
 }
@@ -70,15 +73,21 @@ void loadReservas(LINF *linf) {
 
 void saveUsuarios(LINF *linf) {
   int i;
+  unsigned int j;
   Json::Value usuarios;
   Json::Value usuario;
   Json::Value vec(Json::arrayValue);
   for(i=0;i < linf->usuariosCadastrados();i++){
+    Json::Value vec1(Json::arrayValue);
     usuario["id"] = linf->getUsuario(i).getId();
     usuario["nome"] = linf->getUsuario(i).getNome();
     usuario["nome_do_meio"] = linf->getUsuario(i).getNomeDoMeio();
     usuario["sobrenome"] = linf->getUsuario(i).getSobrenome();
     usuario["tipo"] = linf->getUsuario(i).getTipoDeUsuario();
+    for(j = 0 ;j < linf->getUsuario(i).getPosicoesReservas().size();j++){
+      vec1.append(Json::Value(linf->getUsuario(i).getPosicoesReservas(j)));
+    }
+    usuario["posicoes_reservas"] = vec1;
     vec.append(Json::Value(usuario));
     usuarios["usuarios"]=vec;
   }

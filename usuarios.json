@@ -5,6 +5,7 @@
 			"id" : "160050521",
 			"nome" : "Felippe",
 			"nome_do_meio" : "Kipman",
+			"posicoes_reservas" : [1,2],
 			"sobrenome" : "Carvalho",
 			"tipo" : "aluno"
 		},
@@ -12,6 +13,7 @@
 			"id" : "160026270",
 			"nome" : "Danilo",
 			"nome_do_meio" : "de Lima",
+			"posicoes_reservas" : [1,2,3],
 			"sobrenome" : "Cabrinha",
 			"tipo" : "aluno"
 		},
@@ -19,6 +21,7 @@
 			"id" : "160121568",
 			"nome" : "Alice",
 			"nome_do_meio" : "a",
+			"posicoes_reservas" : [1,2,3,4],
 			"sobrenome" : "Donzela",
 			"tipo" : "Professora"
 		},
@@ -26,6 +29,7 @@
 			"id" : "160187928",
 			"nome" : "Noel",
 			"nome_do_meio" : "da Quebrada",
+			"posicoes_reservas" : [],
 			"sobrenome" : "Perigosa",
 			"tipo" : "Professor"
 		},
@@ -33,8 +37,17 @@
 			"id" : "16205645",
 			"nome" : "Lamron",
 			"nome_do_meio" : "Arara",
+			"posicoes_reservas" : [],
 			"sobrenome" : "Arara",
 			"tipo" : "Funcionario"
+		},
+		{
+			"id" : "120000506",
+			"nome" : "Mestre",
+			"nome_do_meio" : "Magos",
+			"posicoes_reservas" : [],
+			"sobrenome" : "dos",
+			"tipo" : "aluno"
 		}
 	]
 }

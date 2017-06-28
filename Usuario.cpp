@@ -49,6 +49,10 @@ std::vector<int> Usuario::getPosicoesReservas() {
 	return posicoes_reservas;
 }
 
+int Usuario::getPosicoesReservas(int i) {
+	return posicoes_reservas[i];
+}
+
 void Usuario::setTipoDeUsuario(std::string Tipo_de_usuario) {
 	tipo_de_usuario = Tipo_de_usuario;
 }

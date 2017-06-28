@@ -39,6 +39,7 @@ public:
 
 	/// retorna o vector inteiro com as posições das reservas das quais o usuário participa
 	std::vector<int> getPosicoesReservas();
+	int getPosicoesReservas(int i);
 	/// método para adicionar ítens no vector posicoes_reservas
 	void participarReserva(int posicao_reserva);
 
