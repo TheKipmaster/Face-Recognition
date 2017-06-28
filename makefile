@@ -8,7 +8,7 @@ CFLAGS = $(LFLAGS) -c
 all: Reserva.o LINF.o Usuario.o a.out test.out
 
 a.out: main.cpp Usuario.o LINF.o Reserva.o
-	$(CXX) main.cpp $(OBJS) $(LFLAGS)
+	$(CXX) main.cpp $(OBJS) $(LFLAGS) $(OPENCV)
 
 Usuario.o: Usuario.hpp Usuario.cpp Reserva.hpp
 	$(CXX) Usuario.cpp $(CFLAGS)

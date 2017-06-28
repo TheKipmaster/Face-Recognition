@@ -9,20 +9,19 @@ using namespace std;
 using namespace cv;
 
 // Function Headers
-void detectAndDisplay(Mat frame);
+void detectAndDisplay(Mat frame, string nome);
 
 // Global variables
 // Copy this file from opencv/data/haarscascades to target folder
 string face_cascade_name = "/usr/local/share/OpenCV/haarcascades/haarcascade_frontalface_alt.xml";
 CascadeClassifier face_cascade;
 string window_name = "Capture - Face detection";
-int filenumber; // Number of file to be saved
-string filename;
-
+int i = 0;
 // Function main
 int main(void)
 {
     unsigned int i;
+    string nome = "danilo";
     // Load the cascade
     if (!face_cascade.load(face_cascade_name)){
         printf("--(!)Error loading\n");
@@ -35,23 +34,18 @@ int main(void)
     VideoCapture cap(0); // open the default camera
     if(!cap.isOpened())  // check if we succeeded
         return -1;
+    string folderCreateCommand = "mkdir img/" + nome;
+    system(folderCreateCommand.c_str());
     for(i=1;i<=5;i++){
-        while(true)
-        {
-            Mat frame;
-            cap >> frame;
-            detectAndDisplay(frame);
-            if(waitKey(30) >= 0){
-                destroyWindow("Capturar foto");
-                break;
-            } 
-        }
+        Mat frame;
+        cap >> frame;
+        detectAndDisplay(frame, nome);
     }
     return 0;
 }
 
 // Function detectAndDisplay
-void detectAndDisplay(Mat frame)
+void detectAndDisplay(Mat frame, string nome)
 {
     std::vector<Rect> faces;
     Mat frame_gray;
@@ -59,7 +53,6 @@ void detectAndDisplay(Mat frame)
     Mat res;
     Mat gray;
     string text;
-    stringstream sstm;
 
     cvtColor(frame, frame_gray, COLOR_BGR2GRAY);
     equalizeHist(frame_gray, frame_gray);
@@ -76,10 +69,12 @@ void detectAndDisplay(Mat frame)
 
     size_t ib = 0; // ib is index of biggest element
     int ab = 0; // ab is area of biggest element
-
+    imshow("original", frame);
     for (ic = 0; ic < faces.size(); ic++) // Iterate through all current elements (detected faces)
 
     {
+        
+        string caminho;
         roi_c.x = faces[ic].x;
         roi_c.y = faces[ic].y;
         roi_c.width = (faces[ic].width);
@@ -108,16 +103,22 @@ void detectAndDisplay(Mat frame)
         cvtColor(crop, gray, CV_BGR2GRAY); // Convert cropped image to Grayscale
 
         // Form a filename
-        filename = "";
-        stringstream ssfn;
-        ssfn << filenumber << ".png";
-        filename = ssfn.str();
-        filenumber++;
+        caminho = "img/"+ nome + "/"+ nome + to_string(i) +".png";
+        i++;
 
-        imwrite(filename, gray);
 
-        Point pt1(faces[ic].x, faces[ic].y); // Display detected faces on main window - live stream from camera
-        Point pt2((faces[ic].x + faces[ic].height), (faces[ic].y + faces[ic].width));
-        rectangle(frame, pt1, pt2, Scalar(0, 255, 0), 2, 8, 0);
+        if (!crop.empty())
+            imshow("detected", crop);
+        else
+            destroyWindow("detected");
+        char key = (char) waitKey(500);
+        imwrite(caminho, gray);   
+
+        // Point pt1(faces[ic].x, faces[ic].y); // Display detected faces on main window - live stream from camera
+        // Point pt2((faces[ic].x + faces[ic].height), (faces[ic].y + faces[ic].width));
+        // rectangle(frame, pt1, pt2, Scalar(0, 255, 0), 2, 8, 0);
     }
+    
+    
+    
 }
