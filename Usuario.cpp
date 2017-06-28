@@ -61,27 +61,6 @@ std::string Usuario::getTipoDeUsuario() {
 	return tipo_de_usuario;
 }
 
-void Usuario::cadastrar() {
-	std::string input;
-
-	system("clear");
-
-	std::cout << "Informe o tipo do usuário: ";
-	std::cin >> tipo_de_usuario;
-
-	std::cout << "Informe o nome do " << tipo_de_usuario << ": ";
-	std::cin >> nome;
-
-	std::cout << "Informe o sobrenome do " << tipo_de_usuario << ": ";
-	std::cin >> sobrenome;
-
-	std::cout << "Informe o nome do meio do " << tipo_de_usuario << ": ";
-	std::cin >> nome_do_meio;
-
-	std::cout << "Informe o id do " << tipo_de_usuario << ": ";
-	std::cin >> id;
-}
-
 void Usuario::alteraParametro(std::string atributo, std::string parametro) {
   if(atributo == "tipo" || atributo == "Tipo")
     setTipoDeUsuario(parametro);

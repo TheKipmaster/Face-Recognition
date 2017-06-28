@@ -49,8 +49,6 @@ public:
 	// setReserva
 	// getFoto
 	// setFoto
-	/// lida com o cadastro de um novo usuário
-	void cadastrar();
   /// lida com escolha do parâmetro a ser atualizado em LINF::editaUsuario
 	void alteraParametro(std::string atributo, std::string parametro);
 	// Novas fotos

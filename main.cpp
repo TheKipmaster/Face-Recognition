@@ -209,9 +209,7 @@ int main() {
   drawMenu(&n);
   while(n != 5) {
     if(n == 1) {
-      Usuario usuario;
-      usuario.cadastrar();
-      linf.salvarUsuario(usuario);
+      linf.cadastrarUsuario();
       saveUsuarios(&linf);
       drawMenu(&n);
     }

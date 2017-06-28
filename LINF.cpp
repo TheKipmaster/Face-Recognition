@@ -59,6 +59,35 @@ void LINF::salvarUsuario(Usuario usuario) {
   cadastros_de_usuarios.push_back(usuario);
 }
 
+void LINF::cadastrarUsuario() {
+  Usuario usuario;
+  std::string input;
+
+	system("clear");
+
+	std::cout << "Informe o tipo do usuário: ";
+	std::cin >> input;
+  usuario.setTipoDeUsuario(input);
+
+	std::cout << "Informe o nome do " << usuario.getTipoDeUsuario() << ": ";
+	std::cin >> input;
+  usuario.setNome(input);
+
+	std::cout << "Informe o sobrenome do " << usuario.getTipoDeUsuario() << ": ";
+	std::cin >> input;
+  usuario.setSobrenome(input);
+
+	std::cout << "Informe o nome do meio do " << usuario.getTipoDeUsuario() << ": ";
+	std::cin >> input;
+  usuario.setNomeDoMeio(input);
+
+	std::cout << "Informe o id do " << usuario.getTipoDeUsuario() << ": ";
+	std::cin >> input;
+  usuario.setId(input);
+
+  salvarUsuario(usuario);
+}
+
 int LINF::getUsuario(std::string id) {
   unsigned int i=0;
   // Usuario u;
@@ -168,8 +197,12 @@ void LINF::manejarEntrada() {
 
   do {
     posicao_usuario = buscaUsuario();
-    std::cout << "Este é o usuário que estava procurando? (S/N) ";
-    std::cin >> input;
+    if(posicao_usuario != -1) {
+      std::cout << "Este é o usuário que estava procurando? (S/N) ";
+      std::cin >> input;
+    }
+    else
+      return;
   }while(input != "S" && input != "s");
 
   std::cout << "Este usuário está cadastrado como participante das seguintes reservas: " << std::endl << std::endl;
