@@ -8,13 +8,13 @@
 #include "LINF.hpp"
 
 void loadUsuarios(LINF *linf) {
-  Usuario usuario;
   std::ifstream ifs("usuarios.json");
   Json::Reader reader;
   Json::Value obj;
   reader.parse(ifs, obj); // reader can also read strings
   const Json::Value& usuarios = obj["usuarios"]; // array of characters
   for (unsigned int i = 0; i < usuarios.size(); i++){
+    Usuario usuario;
     usuario.setId(usuarios[i]["id"].asString());
     usuario.setNome(usuarios[i]["nome"].asString());
     usuario.setNomeDoMeio(usuarios[i]["nome_do_meio"].asString());
@@ -25,15 +25,13 @@ void loadUsuarios(LINF *linf) {
 }
 
 void loadReservas(LINF *linf) {
-
-  Reserva reserva;
-  Usuario usuario;
   std::ifstream ifs("reservas.json");
   Json::Reader reader;
   Json::Value obj;
   reader.parse(ifs, obj); // reader can also read strings
   const Json::Value& reservas = obj["reservas"];
   for (unsigned int i = 0; i < reservas.size(); i++){
+    Reserva reserva;
     reserva.setIdCriador(reservas[i]["id_criador"].asString());
     reserva.setProposito(reservas[i]["proposito"].asString());
     reserva.setNumeroSalas(reservas[i]["numero_salas"].asString());
@@ -44,6 +42,7 @@ void loadReservas(LINF *linf) {
     reserva.setDataInicio(reservas[i]["data_inicio"].asString());
     reserva.setDataFim(reservas[i]["data_fim"].asString());
     for (unsigned int j = 0; j < reservas[i]["participantes"].size(); j++){
+      Usuario usuario;
       usuario.setId(reservas[i]["participantes"][j]["id"].asString());
       usuario.setNome(reservas[i]["participantes"][j]["nome"].asString());
       usuario.setNomeDoMeio(reservas[i]["participantes"][j]["nome_do_meio"].asString());
@@ -79,15 +78,15 @@ void saveUsuarios(LINF *linf) {
 }
 
 void saveReservas(LINF *linf) {
+
   unsigned int i, j;
   Json::Value reservas;
   Json::Value reserva;
   Json::Value usuario;
   Json::Value vec(Json::arrayValue);
-  Json::Value vec1(Json::arrayValue);
 
   for(i=0;i < linf->getReservas().size();i++){
-
+    Json::Value vec1(Json::arrayValue);
     reserva["id_criador"] = linf->indexReserva(i).getIdCriador();
     reserva["proposito"] = linf->indexReserva(i).getProposito();
     reserva["numero_salas"] = linf->indexReserva(i).getNumeroSalas();
@@ -187,12 +186,11 @@ int main() {
 
   drawMenu(&n);
   while(n != 5) {
-    saveUsuarios(&linf);
-    saveReservas(&linf);
     if(n == 1) {
       Usuario usuario;
       usuario.cadastrar();
       linf.salvarUsuario(usuario);
+      saveUsuarios(&linf);
       drawMenu(&n);
     }
     else if(n == 2) {
@@ -200,6 +198,7 @@ int main() {
       reserva.cadastrar();
       addParticipantes(&reserva, &linf);
       linf.salvarReserva(reserva);
+      saveReservas(&linf);
       drawMenu(&n);
     }
     else if(n == 3) {
