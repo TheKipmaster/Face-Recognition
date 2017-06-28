@@ -144,6 +144,19 @@ void LINF::indexReserva() {
   getchar();
 }
 
+void LINF::indexReserva(std::vector<Reserva> arr) {
+  unsigned int i;
+
+  system("clear");
+
+  std::cout << "--- LISTA DE RESERVAS AGENDADAS ---" << std::endl << std::endl;
+  for(i = 0; i < arr.size(); i++) {
+    std::cout << arr.at(i) << std::endl;
+  }
+  getchar();
+  getchar();
+}
+
 Reserva LINF::indexReserva(int i) {
   return cadastros_de_reservas.at(i);
 }

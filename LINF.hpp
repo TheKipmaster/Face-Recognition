@@ -44,7 +44,7 @@ public:
   /// lista toda reserva salva
   void indexReserva();
   Reserva indexReserva(int i);
-
+  void indexReserva(std::vector<Reserva> arr);
   /// lida com alguém tentando entrar no linf
   void manejarEntrada();
 };

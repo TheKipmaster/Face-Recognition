@@ -7,6 +7,19 @@
 #include "Reserva.hpp"
 #include "LINF.hpp"
 
+void listaReservasDeUsuario(LINF *linf, std::string id) {
+  unsigned int i, j;
+  std::vector<Reserva> reservas_do_usuario;
+  for(i = 0; i < linf->getReservas().size(); i++) {
+    for(j = 0; j < linf->indexReserva(i).getParticipantes().size();j++) {
+      if(linf->indexReserva(i).getParticipante(j).getId() == id) {
+        reservas_do_usuario.push_back(linf->indexReserva(i));
+      }
+    }
+  }
+  linf->indexReserva(reservas_do_usuario);
+}
+
 void loadUsuarios(LINF *linf) {
   std::ifstream ifs("usuarios.json");
   Json::Reader reader;
@@ -183,7 +196,7 @@ int main() {
   LINF linf;
   loadUsuarios(&linf);
   loadReservas(&linf);
-
+  // listaReservasDeUsuario(&linf, "160050521");
   drawMenu(&n);
   while(n != 5) {
     if(n == 1) {
