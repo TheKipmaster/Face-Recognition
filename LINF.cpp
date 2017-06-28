@@ -184,8 +184,12 @@ void LINF::manejarEntrada() {
 
   do {
     posicao_usuario = buscaUsuario();
-    std::cout << "Este é o usuário que estava procurando? (S/N) ";
-    std::cin >> input;
+    if(posicao_usuario != -1) {
+      std::cout << "Este é o usuário que estava procurando? (S/N) ";
+      std::cin >> input;
+    }
+    else
+      return;
   }while(input != "S" && input != "s");
 
   std::cout << "Este usuário está cadastrado como participante das seguintes reservas: " << std::endl << std::endl;
