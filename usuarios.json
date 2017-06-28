@@ -1,11 +1,11 @@
 {
-	"usuarios" : 
+	"usuarios" :
 	[
 		{
 			"id" : "160050521",
 			"nome" : "Felippe",
 			"nome_do_meio" : "Kipman",
-			"posicoes_reservas" : [1,2],
+			"posicoes_reservas" : [0,1],
 			"sobrenome" : "Carvalho",
 			"tipo" : "aluno"
 		},
@@ -13,7 +13,7 @@
 			"id" : "160026270",
 			"nome" : "Danilo",
 			"nome_do_meio" : "de Lima",
-			"posicoes_reservas" : [1,2,3],
+			"posicoes_reservas" : [1],
 			"sobrenome" : "Cabrinha",
 			"tipo" : "aluno"
 		},
@@ -21,7 +21,7 @@
 			"id" : "160121568",
 			"nome" : "Alice",
 			"nome_do_meio" : "a",
-			"posicoes_reservas" : [1,2,3,4],
+			"posicoes_reservas" : [],
 			"sobrenome" : "Donzela",
 			"tipo" : "Professora"
 		},
