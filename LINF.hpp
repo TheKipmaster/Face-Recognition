@@ -24,6 +24,8 @@ public:
   std::vector<Usuario>* getUsuarios();
   std::vector<Reserva> getReservas();
 
+  /// lida com o cadastro de um novo usuário
+  void cadastrarUsuario();
   /// insere um novo usuário no vector de usuários
   void salvarUsuario(Usuario usuario);
   /// busca no banco baseado no número de identificação dele

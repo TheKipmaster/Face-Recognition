@@ -190,9 +190,7 @@ int main() {
     saveUsuarios(&linf);
     saveReservas(&linf);
     if(n == 1) {
-      Usuario usuario;
-      usuario.cadastrar();
-      linf.salvarUsuario(usuario);
+      linf.cadastrarUsuario();
       drawMenu(&n);
     }
     else if(n == 2) {
