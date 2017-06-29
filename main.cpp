@@ -320,10 +320,8 @@ int main() {
   drawMenu(&n);
   while(n != 5) {
     if(n == 1) {
-      Usuario usuario;
-      usuario.cadastrar();
-      openCamera(usuario.getNome());
-      linf.salvarUsuario(usuario);
+      linf.cadastrarUsuario();
+      openCamera(std::to_string(linf.usuariosCadastrados()));
       saveUsuarios(&linf);
       drawMenu(&n);
     }
