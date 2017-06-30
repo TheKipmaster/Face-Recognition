@@ -66,23 +66,24 @@ void LINF::cadastrarUsuario() {
 	system("clear");
 
 	std::cout << "Informe o tipo do usuário: ";
-	std::cin >> input;
+  getchar();
+  getline(std::cin, input);
   usuario.setTipoDeUsuario(input);
 
 	std::cout << "Informe o nome do " << usuario.getTipoDeUsuario() << ": ";
-	std::cin >> input;
+	getline(std::cin, input);
   usuario.setNome(input);
 
 	std::cout << "Informe o sobrenome do " << usuario.getTipoDeUsuario() << ": ";
-	std::cin >> input;
+	getline(std::cin, input);
   usuario.setSobrenome(input);
 
 	std::cout << "Informe o nome do meio do " << usuario.getTipoDeUsuario() << ": ";
-	std::cin >> input;
+	getline(std::cin, input);
   usuario.setNomeDoMeio(input);
 
 	std::cout << "Informe o id do " << usuario.getTipoDeUsuario() << ": ";
-	std::cin >> input;
+  getline(std::cin, input);
   usuario.setId(input);
 
   salvarUsuario(usuario);
